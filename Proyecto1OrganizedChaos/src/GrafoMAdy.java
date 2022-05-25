@@ -5,32 +5,30 @@
  */
 public class GrafoMAdy {
     //Número de vértices
-    private int numVerts;
+    private static int numVerts;
     
     //tamaño máximo de la matriz
     private int maxNodos;
     
     //Lista con los vértices
-    //private Vertice[] verts;
+    private static Vertice[] verts;
     
     //Forma la matriz
     private int [][] matAdy;
-    
-    //Indica si es dirigido el grafo
-    private boolean dirigido;
-
-    
-    public GrafoMAdy(boolean d){
-        maxNodos = numVerts = 0;
-        dirigido = d;
-    }
+      
             
-    public GrafoMAdy(int num, int max, boolean d) {
-        matAdy = new int [num][num];
-        //verts = new Vertice[num];
+    public GrafoMAdy(int max) {
+        matAdy = new int [max][max];
+        verts = new Vertice[max];
         maxNodos = max;        
         numVerts = 0;
-        dirigido = d;
+        for (int i = 0; i < max; i++) {
+            for (int j = 0; j < max; j++) {
+                matAdy[i][j] =  0; 
+            }
+            
+        }
+       
     }
 
 //Getters y Setters
@@ -50,13 +48,7 @@ public class GrafoMAdy {
         this.maxNodos = maxVerts;
     }
 
-    public boolean isDirigido() {
-        return dirigido;
-    }
-
-    public void setDirigido(boolean dirigido) {
-        this.dirigido = dirigido;
-    }
+  
     
     //MÉTODOS
     
@@ -64,14 +56,64 @@ public class GrafoMAdy {
         return this.numVerts == 0;
     }
     
+//    //Va a decir si el vértice ya existe o no. Validar
+//    public boolean buscarVertice(String nom){
+//        
+//        Vertice verti = new Vertice(nom);
+//        boolean existe = false;
+//        int i = 0;
+//        for (; (i < numVerts) && !existe;) {
+//            existe = verts[i].comparar(verti);
+//            if(!existe) i++;
+//           
+//        }
+//        
+//        return existe;
+//        
+//    }
+    
+    //Para retornar el índice de los vértices
+     public static int buscarIndex(String nom){
+        
+        Vertice verti = new Vertice(nom);
+        boolean existe = false;
+        int i = 0;
+        for (; (i < numVerts) && !existe;) {
+            existe = verts[i].comparar(verti);
+            if(!existe) i++;
+           
+        }
+        
+        if(existe){
+        return i;
+        }
+        else{
+        
+        return -1;
+            
+        }
+    }
+    
 //Aristas 
         
-    public void crearArista(int u, int v, int peso){
+    public void crearArista(String u, String v, int peso){
         /*En el código lo marcan con true, creo recordar que Ale
-        dijo que en este caso se pondría el peso, así que añadí ese paramétro.        
+        dijo que en este caso se pondría el peso, así que añadí ese paramétro.       
+     
+        Hacer excepciones por si alguno de los dos no existe, por si superan el maximo, etc.
         */
         if(!this.esVacio()){
-            matAdy[u][v] = peso; 
+            
+            int valU, valV;
+            valU = buscarIndex(u);
+            valV = buscarIndex(v);
+            if(valU != -1 && valV != -1){
+                matAdy[valU][valV] = peso;
+            }
+            else{
+                System.out.println("Error, el vértice no existe"); //hacerle format
+        }
+             
         }
         else{
             System.out.println("Error, grafo vacío");
@@ -79,35 +121,36 @@ public class GrafoMAdy {
     }
     
     
-    public void eliminarArista(int u, int v){
-        try{
-            if(!this.esVacio()){
-            matAdy[u][v] = 0; 
+    public void eliminarArista(String u, String v){
+        
+        if(!this.esVacio()){
+            int valU, valV;
+            valU = buscarIndex(u);
+            valV = buscarIndex(v);
+           if(valU != -1 && valV != -1){
+                matAdy[valU][valV] = 0;
+            }
+            else{
+                System.out.println("Error, el vértice no existe");
+            }
         }
         else{
             System.out.println("Error, grafo vacío");
         }
             
-        } catch(Exception e){
-            System.out.println("Vértice no existe");
-        }
+        
     }
     
 //Vértice
     
-    public void crearVertice(int n){
-        if(n > maxNodos){
-            System.out.println("Error. Número de vértices superado");
+    public void crearVertice(String nom){
+        int existe = buscarIndex(nom);
+        if(existe == -1){
+            Vertice verti = new Vertice(nom);
+            verti.setIndex(numVerts);
+            verts[numVerts++] = verti;
         }
-        else{
-            for (int i = 0; i < numVerts + n; i++) {
-                for (int j = 0; j < numVerts + n; j++) {
-                    matAdy[i][j] = matAdy[j][i] = 0; 
-                }
-            }
-            
-            numVerts += n;
-        }
+        
     }
     
 //Eliminar vértice no está y no tengo cabeza para pensar en eso ahora. Sorry
@@ -119,13 +162,8 @@ public class GrafoMAdy {
         
         for (int i = 0; i < numVerts; i++) {
             for (int j = 0; j < numVerts; j++) {
+                System.out.print(matAdy[i][j]);
                 
-                if(matAdy[i][j] != 0){
-                    System.out.print(matAdy[i][j]);
-                }
-                else{
-                    System.out.println(0);
-                }
             }
             
         }

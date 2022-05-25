@@ -13,11 +13,11 @@ public class Vertice {
     //asignarle un nombre al vértice. Creo que puede ser útil
     String nombre;
     //Le asigna un número al vértice
-    int numVertice;
+    int index;
 
     public Vertice(String nombre) {
         this.nombre = nombre;
-        this.numVertice = -1;
+        this.index = -1;
     }
 
     //GETTERS Y SETTERS
@@ -30,24 +30,25 @@ public class Vertice {
         this.nombre = nombre;
     }
 
-    public int getNumVertice() {
-        return numVertice;
+    public int getIndex() {
+        return index;
     }
 
-    public void setNumVertice(int numVertice) {
-        this.numVertice = numVertice;
+    public void setIndex(int index) {
+        this.index = index;
     }
  
 // MÉTODOS
     
+    //Revisa si el vértice ya existe
     public boolean comparar(Vertice n){
         return this.nombre.equals(n.getNombre());
     }
-
-   
-    public String toString() {
-        return nombre + "(" + numVertice + ")";
-    }
     
+   
+//    public String toString() {
+//        return nombre + "(" + index + ")";
+//    }
+//    
     
 }
