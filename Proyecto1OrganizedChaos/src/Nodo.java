@@ -1,7 +1,9 @@
 
 /**
  *
- * @author ERodríguez
+ * @author ASantos 
+ * @version: 27/05/22
+ * 
  */
 public class Nodo<T> {
     
@@ -23,6 +25,5 @@ public class Nodo<T> {
     public void setpNext(Nodo pNext) {
         this.pNext = pNext;
     }
-    
-    
+      
 }
