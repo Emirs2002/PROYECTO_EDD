@@ -7,7 +7,7 @@
 
 
 public class Vertice {
-    //asignarle un nombre al vértice. Creo que puede ser útil
+    //asignarle un nombre al vértice. 
     protected String nombre;
     //Le asigna un número al vértice
     protected int index;

@@ -12,12 +12,14 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        GrafoMAdy grafo = new GrafoMAdy(5);
+        Archivo a = new Archivo();
+        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
         
         grafo.printMatriz();
+        
+        
+
+    
     }
-    
-    
     
 }
