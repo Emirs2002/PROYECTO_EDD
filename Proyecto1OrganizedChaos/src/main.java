@@ -17,9 +17,15 @@ public class main {
         
         grafo.printMatriz();
         
+        Vertice[] verts = grafo.getVerts();
         
-
-    
+        Lista lista = verts[0].getProductos();
+        
+        System.out.println(verts[0].getNombre());
+        System.out.println("Almacen 1");
+        lista.imprimirLista(); 
+        int tamanho = lista.getTamanho();
+        System.out.printf("Tamanho de la lista es %d\n", tamanho);
     }
     
 }

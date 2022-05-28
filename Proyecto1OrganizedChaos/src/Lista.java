@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
  *
  * @author ASantos
  */
-public class Lista <T> {
+public class Lista {
     
-    private Nodo<T> pfirst;
-    private Nodo<T> plast;
+    private Nodo pfirst;
+    private Nodo plast;
     private int tamanho;
 
 //GETTERS Y SETTERS 
@@ -21,14 +21,14 @@ public class Lista <T> {
     /**
     *@return pfirst
     */
-    public Nodo<T> getPfirst() {
+    public Nodo getPfirst() {
         return pfirst;
     }
    
     /**
     * @param pfirst, asigna pfirst
     */
-    public void setPfirst(Nodo<T> pfirst) {
+    public void setPfirst(Nodo pfirst) {
         this.pfirst = pfirst;
     }
    
@@ -58,11 +58,11 @@ public class Lista <T> {
         return pfirst == null;
     }  
     
-    public Nodo primerNodo(Nodo <T> posicion){
+    public Nodo primerNodo(Nodo posicion){
         return pfirst;
     }
     
-    public Nodo ultimoNodo(Nodo <T> posicion){
+    public Nodo ultimoNodo(Nodo posicion){
         return null;
     }
     
@@ -72,7 +72,7 @@ public class Lista <T> {
     }
     
     //OBTENER EL PROXIMO NODO
-    public Nodo proximoNodo(Nodo <T> enlace){
+    public Nodo proximoNodo(Nodo  enlace){
         if(enlace.getPnext() != null){
             enlace =enlace.getPnext();
             return enlace;                    
@@ -95,7 +95,8 @@ public class Lista <T> {
 
             for (int i = 0; i< this.getTamanho(); i++ ){               
 
-                print += " "+ temp.getData();
+                print += " "+ temp.getData().getNombre() + " " + temp.getData().getCantidad() + "|";
+                
                 temp = proximoNodo(temp);               
                 
                }
@@ -203,6 +204,6 @@ public class Lista <T> {
                 temp = temp.getPnext();
             }return temp;
         }
-        }
+    }
     
 }

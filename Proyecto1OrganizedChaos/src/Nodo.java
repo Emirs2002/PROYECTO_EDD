@@ -5,13 +5,13 @@
  * @version: 27/05/22
  * 
  */
-public class Nodo <T>{
+public class Nodo{
     
-    protected Nodo <T> pnext;
-    protected T data;
+    protected Nodo pnext;
+    protected Producto data;
     
     
-    public Nodo(T data) {
+    public Nodo(Producto data) {
         this.pnext = null;
         this.data = data;
     }
@@ -19,29 +19,28 @@ public class Nodo <T>{
     /**
     * @return pnext
     */
-    public Nodo<T> getPnext() {
+    public Nodo getPnext() {
         return pnext;
     }
 
     /**
     * @param pnext, asigna pnext
     */
-    public void setPnext(Nodo<T> pnext) {
+    public void setPnext(Nodo pnext) {
         this.pnext = pnext;
     }
 
     /**
     *@return nombre
     */
-    public T getData() {
+    public Producto getData() {
         return data;
     }
 
     /**
     * @param data, asigna data
     */
-    public void setData(T data) {
+    public void setData(Producto data) {
         this.data = data;
     }
-    
 }

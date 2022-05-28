@@ -50,6 +50,14 @@ public class GrafoMAdy {
     public void setMaxVerts(int maxVerts) {
         this.maxNodos = maxVerts;
     }
+    
+    public Vertice[] getVerts(){
+        return this.verts;
+    }
+    
+    public void setVerts(Vertice[] verts){
+        this.verts = verts;
+    }
 
   
     
