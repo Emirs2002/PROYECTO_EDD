@@ -1,7 +1,9 @@
 
 /**
  *
- * @author ERodríguez
+ * @author ASantos
+ * @version: 26/05/22
+ * 
  */
 public class Producto {
     protected String nombre;
@@ -13,28 +15,28 @@ public class Producto {
     }
 
     /**
-     * @return the nombre
+     * @return nombre
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombre, asigna nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the cantidad
+     * @return cantidad
      */
     public int getCantidad() {
         return cantidad;
     }
 
     /**
-     * @param cantidad the cantidad to set
+     * @param cantidad, asigna cantidad
      */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
