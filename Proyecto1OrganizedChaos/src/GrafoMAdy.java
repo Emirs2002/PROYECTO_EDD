@@ -123,7 +123,7 @@ public class GrafoMAdy {
             }
             else{
                 System.out.println("Error, el vértice no existe"); //hacerle format
-        }
+            }
              
         }
         else{
@@ -150,6 +150,17 @@ public class GrafoMAdy {
         }
             
         
+    }
+    
+    //Comprobar si existe la arista
+    public boolean existeArista(int v, int u){
+        boolean existe;
+        if(matAdy[v][u] != 0){
+            existe = true;
+        }else{
+            existe = false;
+        }
+        return existe;
     }
     
 //Vértice

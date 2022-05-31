@@ -41,7 +41,7 @@ public class Archivo {
             for (int i=1; i < arr.length; i++) {
                 if(!arr[i].equals("Rutas")) {
                     
-                    char a = (arr[i].charAt(8));
+                    char a = (arr[i].charAt(8)); //Recordar sintaxis de almacen a la hora de escribir txt (crear almacen)
                     noms += Character.toString(a);
                     cont ++;   
                 }

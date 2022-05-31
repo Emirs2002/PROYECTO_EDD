@@ -2,7 +2,7 @@
 /**
  *
  * @author ASantos 
- * @version: 27/05/22
+ * @version: 30/05/22
  * 
  */
 public class Nodo{
@@ -49,5 +49,19 @@ public class Nodo{
     */
     public void setData(Producto data) {
         this.data = data;
+    }
+    
+    /**
+    *@return dato del nodo - colas/pilas
+    */
+    public Object getData2() {
+        return data2;
+    }
+
+    /**
+    * @param data2, asigna data2
+    */
+    public void setData2(Object data2) {
+        this.data2 = data2;
     }
 }

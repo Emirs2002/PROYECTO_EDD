@@ -2,14 +2,22 @@
 /**
  *
  * @author ERodríguez
- * @version 29/05/2022
+ * @version 30/05/2022
  */
-public class Colas {
+public class Cola {
      
     private int size;
     private Nodo front;
     private Nodo back;
 
+    //CONSTRUCTOR COLA
+    public Cola() {
+        this.size = 0;
+        this.front = null;
+        this.back = null;
+    }
+    
+ 
     /**
     *@return size
     * 
@@ -26,7 +34,7 @@ public class Colas {
     }
 
     /**
-    *@param back, asigna front
+    *@param front asigna front
     */
     public void setFront(Nodo front) {
         this.front = front;
@@ -40,17 +48,17 @@ public class Colas {
     }
 
     /**
-    *@param back, asigna back 
+    *@param back asigna back 
     */
     public void setBack(Nodo back) {
         this.back = back;
     }
 
     /**
-    *@return boolean 
+    *@return si esta vacia la cola
     */
     public boolean esVacio() {
-        return this.size == 0;
+        return this.front == null;
     }
 
     //Verificar si existen
@@ -59,12 +67,12 @@ public class Colas {
         boolean existe;
         if (!esVacio()) {
             desencolar();
-            if (aux.getData() == info) {
+            if (aux.getData2() == info) {
                 existe = true;
             } else {
                 existe = existe(info);
             }
-            encolar(aux.getData());
+            encolar(aux.getData2());
         } else {
             existe = false;
         }
@@ -86,11 +94,15 @@ public class Colas {
     }
 
     //Eliminar de la cola
-    public void desencolar() {
+    //Devolver index del vertice
+    public Object desencolar() {
+        Nodo aux = front;        
+        Object index = aux.getData2();
         if (!esVacio()) {
             front = front.pnext;
             size--;
         }
+    return index;
     }
 
     //Invertir cola
@@ -105,10 +117,10 @@ public class Colas {
     }
 
     //Copiar Cola
-    public Colas copy(Colas copia) {
+    public Cola copy(Cola copia) {
         Object aux;
         if (!esVacio()) {
-            aux = front.getData();
+            aux = front.getData2();
             desencolar();
             copia.encolar(aux);
             copy(copia);
@@ -127,22 +139,21 @@ public class Colas {
             desencolar();
             index--;
             elemento = searchElement(index);
-            encolar(aux.getData());
+            encolar(aux.getData2());
         } else {
-            elemento = front.getData();
+            elemento = front.getData2();
         }
         return elemento;
     }
 
     //Mostrar cola
-    public String mostrarCola(String cola) {
+    public void mostrarCola() {
         Nodo temp = front;
-        int aux = size;
-        if (aux > 0) {
-            desencolar();
-            cola = mostrarCola(cola + "\n" + temp.getData());
-            encolar(temp.getData());
+        
+        while (temp != null) {
+            System.out.println(temp.getData2());
+            temp = temp.pnext;
         }
-        return cola;
+        
     }
 }
