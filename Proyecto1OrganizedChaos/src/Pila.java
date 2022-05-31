@@ -2,15 +2,15 @@
 /**
  * 
  * @author ERodríguez
- * @version 29/05/2022
+ * @version 30/05/2022
  */
-public class Pilas {
+public class Pila {
   
     private Nodo top;
     private int size;
 
     //Constructor 
-    public Pilas() {
+    public Pila() {
         this.top = null;
         this.size = 0;
     }
@@ -24,8 +24,18 @@ public class Pilas {
     public void setTop(Nodo cima) {
         this.top = cima;
     }
+    
+     //Obtener tamaño
+    public int getSize() {
+        return size;
+    }
+    
+    //Asignar tamaño
+    public void setSize(int size){
+        this.size = size;
+    }
 
-    //Apilar pila
+    //Apilar 
     public void apilar(Object dato) {
         Nodo aux = new Nodo(dato);
         aux.setPnext(this.top);
@@ -33,19 +43,15 @@ public class Pilas {
         size++;
     }
 
-    //Desapilar pila
+    //Desapilar 
     public Object desapilar() {
         Object info = top.getData();
         this.top = top.getPnext();
         size--;
-        return info;
+    return info;
     }
 
-    //Obtener tamaño
-    public int getSize() {
-        return size;
-    }
-
+  
     //Obtener valor del top o cima
     public Object top() {
         return top.getData();
@@ -56,52 +62,41 @@ public class Pilas {
         return top == null;
     }
 
-    //Numeros de datos en la pila
-    public int countData() {
-        int contador = 0;
-        Nodo h = top;
-        while (h != null) {
-            contador++;
-            h = h.getPnext();
-        }
-        return contador;
-    }
 
     //Mostrar pila
-    public String mostrarPila() {
-        String pila = "";
+    public void mostrarPila() {       
         Nodo pAux = this.top;
         while (pAux != null) {
-            pila = pila + " " + pAux.getData().toString();
+            System.out.println(pAux.getData());
             pAux = pAux.getPnext();
         }
-        return pila;
+        
     }
 
     //sumergir valor
-    public void immerse(Object x) {
+    public void sumergir(Object x) {
         if (!isEmpty()) {
-            Object aux = desapilar();
-            immerse(x);
-            apilar(aux);
+            Object aux = this.desapilar();
+            this.sumergir(x);
+            this.apilar(aux);
         } else {
-            apilar(x);
+            this.apilar(x);
         }
     }
 
     //Invertir pila
     public void invertirPila() {
         if (!isEmpty()) {
-            Object aux = desapilar();
-            invertirPila();
-            immerse(aux);
+            Object aux = this.desapilar();
+            this.invertirPila();
+            this.sumergir(aux);
         }
     }
 
     //Vaciar pila
     public void vaciarPila() {
         while (!isEmpty()) {
-            desapilar();
+            this.desapilar();
         }
     }
     

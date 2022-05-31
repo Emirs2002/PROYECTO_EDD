@@ -163,6 +163,18 @@ public class GrafoMAdy {
         return existe;
     }
     
+    //buscar arista:
+//    public boolean getArista(int v, int u){
+//    boolean existe;
+//    if(matAdy[v][u] != 0){
+//        existe = true;
+//    }else{
+//        existe = false;
+//    }
+//    return existe;
+//}
+    
+
 //Vértice
     
     public void crearVertice(String nom){
