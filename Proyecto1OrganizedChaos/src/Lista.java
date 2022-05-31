@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
  *
  * @author ASantos
  */
-public class Lista <T> {
+public class Lista {
     
-    private Nodo<T> pfirst;
-    private Nodo<T> plast;
+    private Nodo pfirst;
+    private Nodo plast;
     private int tamanho;
 
 //GETTERS Y SETTERS 
@@ -21,14 +21,14 @@ public class Lista <T> {
     /**
     *@return pfirst
     */
-    public Nodo<T> getPfirst() {
+    public Nodo getPfirst() {
         return pfirst;
     }
    
     /**
     * @param pfirst, asigna pfirst
     */
-    public void setPfirst(Nodo<T> pfirst) {
+    public void setPfirst(Nodo pfirst) {
         this.pfirst = pfirst;
     }
    
@@ -58,11 +58,11 @@ public class Lista <T> {
         return pfirst == null;
     }  
     
-    public Nodo primerNodo(Nodo <T> posicion){
+    public Nodo primerNodo(Nodo posicion){
         return pfirst;
     }
     
-    public Nodo ultimoNodo(Nodo <T> posicion){
+    public Nodo ultimoNodo(Nodo posicion){
         return null;
     }
     
@@ -72,9 +72,9 @@ public class Lista <T> {
     }
     
     //OBTENER EL PROXIMO NODO
-    public Nodo proximoNodo(Nodo <T> enlace){
-        if(enlace.getpNext() != null){
-            enlace =enlace.getpNext();
+    public Nodo proximoNodo(Nodo  enlace){
+        if(enlace.getPnext() != null){
+            enlace =enlace.getPnext();
             return enlace;                    
         }
         else{
@@ -95,7 +95,8 @@ public class Lista <T> {
 
             for (int i = 0; i< this.getTamanho(); i++ ){               
 
-                print += " "+ temp.getData();
+                print += " "+ temp.getData().getNombre() + " " + temp.getData().getCantidad() + "|";
+                
                 temp = proximoNodo(temp);               
                 
                }
@@ -109,7 +110,7 @@ public class Lista <T> {
         
         if(!this.isEmpty()){ 
             Nodo temp = pfirst;
-            nodito.setpNext(temp);
+            nodito.setPnext(temp);
             pfirst = nodito;
         }
         else{
@@ -122,7 +123,7 @@ public class Lista <T> {
     //ELIMINA AL INICIO
     public void deleteAtStart(){
         if (!isEmpty()){
-            pfirst = pfirst.getpNext();
+            pfirst = pfirst.getPnext();
             tamanho -= 1;
         }else{
             JOptionPane.showMessageDialog(null,"La lista está vacía");
@@ -134,7 +135,7 @@ public class Lista <T> {
         
         if(!this.isEmpty()){ 
             Nodo temp = plast;
-            temp.setpNext(nodito);
+            temp.setPnext(nodito);
             plast = nodito;
         }
         else{
@@ -158,7 +159,7 @@ public class Lista <T> {
                     return temp;
                 }
                 else{
-                    temp = temp.getpNext();
+                    temp = temp.getPnext();
                 }
             }
         }
@@ -179,7 +180,7 @@ public class Lista <T> {
                      return cont;
                      
                 }else{
-                    temp = temp.getpNext();
+                    temp = temp.getPnext();
                     cont ++;
                 }
                 
@@ -200,9 +201,9 @@ public class Lista <T> {
             Nodo temp = pfirst;
             
             for (int i = 0; i < posicion; i++) {
-                temp = temp.getpNext();
+                temp = temp.getPnext();
             }return temp;
         }
-        }
+    }
     
 }

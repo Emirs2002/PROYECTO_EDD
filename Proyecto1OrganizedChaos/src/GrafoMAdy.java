@@ -1,4 +1,7 @@
 
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author ERodríguez
@@ -15,6 +18,8 @@ public class GrafoMAdy {
     
     //Forma la matriz
     private int [][] matAdy;
+
+
       
             
     public GrafoMAdy(int max) {
@@ -46,6 +51,14 @@ public class GrafoMAdy {
 
     public void setMaxVerts(int maxVerts) {
         this.maxNodos = maxVerts;
+    }
+    
+    public Vertice[] getVerts(){
+        return this.verts;
+    }
+    
+    public void setVerts(Vertice[] verts){
+        this.verts = verts;
     }
 
   
@@ -158,15 +171,18 @@ public class GrafoMAdy {
 //Imprimir la matriz de adyacencia
     
     public void printMatriz(){
-        System.out.printf("La matriz contiene %d vértices \n", numVerts);
-        
-        for (int i = 0; i < numVerts; i++) {
-            for (int j = 0; j < numVerts; j++) {
-                System.out.print(matAdy[i][j]);
-                
+        System.out.printf("La matriz contiene %d vertices \n", numVerts);
+        String matriz = "";
+        for (int i = 0; i < maxNodos; i++) {
+            matriz += ",";
+            for (int j = 0; j < maxNodos; j++) {
+                matriz += (matAdy[i][j]);
+             
             }
-            
+        
         }
+        String[] mat = matriz.split(",");
+        JOptionPane.showMessageDialog(null, mat);
     }
     
 //Tamaño del grafo

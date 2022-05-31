@@ -1,29 +1,47 @@
 
+
 /**
  *
  * @author ASantos 
  * @version: 27/05/22
  * 
  */
-public class Nodo<T> {
+public class Nodo{
     
-    private Nodo pAnt;
-    private Nodo pNext;
-
-    public Nodo getpAnt() {
-        return pAnt;
+    protected Nodo pnext;
+    protected Producto data;
+    
+    
+    public Nodo(Producto data) {
+        this.pnext = null;
+        this.data = data;
     }
 
-    public void setpAnt(Nodo pAnt) {
-        this.pAnt = pAnt;
+    /**
+    * @return pnext
+    */
+    public Nodo getPnext() {
+        return pnext;
     }
 
-    public Nodo getpNext() {
-        return pNext;
+    /**
+    * @param pnext, asigna pnext
+    */
+    public void setPnext(Nodo pnext) {
+        this.pnext = pnext;
     }
 
-    public void setpNext(Nodo pNext) {
-        this.pNext = pNext;
+    /**
+    *@return nombre
+    */
+    public Producto getData() {
+        return data;
     }
-      
+
+    /**
+    * @param data, asigna data
+    */
+    public void setData(Producto data) {
+        this.data = data;
+    }
 }
