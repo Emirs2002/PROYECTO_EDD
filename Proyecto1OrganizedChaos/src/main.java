@@ -24,12 +24,12 @@ public class main {
         
 
 //-----------------------------------------------------------------------------
-        
-        int[] prueba = Recorrido.recorrerProfundidad(grafo, "D");
-        
-        for (int i = 0; i < prueba.length; i++) {
-            System.out.print(prueba[i]);
-        }
+//        
+//        int[] prueba = Recorrido.recorrerProfundidad(grafo, "D");
+//        
+//        for (int i = 0; i < prueba.length; i++) {
+//            System.out.print(prueba[i]);
+//        }
 
 //
 //        Interfaz ventana = new Interfaz();
