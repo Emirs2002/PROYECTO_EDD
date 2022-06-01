@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -69,6 +70,7 @@ public class Archivo {
             //Asignar aristas
            
             String rutas = arr[cont+2]; //se toma todo el string con las rutas
+            
             String[] rout = rutas.split(","); //se separan las rutas
             int j = 0;
             do{

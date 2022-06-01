@@ -45,7 +45,7 @@ public class Pila {
 
     //Desapilar 
     public Object desapilar() {
-        Object info = top.getData();
+        Object info = top.getData2();
         this.top = top.getPnext();
         size--;
     return info;
@@ -54,7 +54,7 @@ public class Pila {
   
     //Obtener valor del top o cima
     public Object top() {
-        return top.getData();
+        return top.getData2();
     }
 
     //Esta vacio
@@ -67,7 +67,7 @@ public class Pila {
     public void mostrarPila() {       
         Nodo pAux = this.top;
         while (pAux != null) {
-            System.out.println(pAux.getData());
+            System.out.println(pAux.getData2());
             pAux = pAux.getPnext();
         }
         

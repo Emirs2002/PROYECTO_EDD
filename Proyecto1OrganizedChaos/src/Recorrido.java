@@ -76,7 +76,7 @@ public class Recorrido {
 
 
     public static int[] recorrerProfundidad(GrafoMAdy grafo, String nombre){
-        int valOrigen, valSig;       
+        int valOrigen, valSig = 0;       
         int[] arrVisitados = null;
         Vertice[] verts = grafo.getVerts();
         Pila pila = new Pila();
@@ -98,9 +98,9 @@ public class Recorrido {
             while(!pila.isEmpty()){
                 Integer sig;
                 sig = (Integer) pila.desapilar();
-                valSig = sig.intValue();
-                System.out.println("Vertice" + verts[valSig].getNombre() + "visitado");
-                
+                valSig = sig;
+                System.out.println("Vertice" + " " + verts[valSig].getNombre()+ " " + "visitado");
+            
                 for (int j = 0; j < grafo.getNumVerts(); j++){
                     if((valSig != j) && (grafo.existeArista(valSig, j) && arrVisitados[j] == -1)){
                         int valNodo = verts[j].getIndex();

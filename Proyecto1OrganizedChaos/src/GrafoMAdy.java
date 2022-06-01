@@ -18,6 +18,8 @@ public class GrafoMAdy {
     
     //Forma la matriz
     private int [][] matAdy;
+
+
       
             
     public GrafoMAdy(int max) {

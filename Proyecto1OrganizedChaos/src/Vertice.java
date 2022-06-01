@@ -5,7 +5,6 @@
  */
 
 
-
 public class Vertice {
     //asignarle un nombre al vértice. 
     protected String nombre;
