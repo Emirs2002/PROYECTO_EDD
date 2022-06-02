@@ -225,26 +225,44 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_grafoActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-
+         Archivo a = new Archivo();
+        
+        
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(null);
         File archivo = fc.getSelectedFile();
-        String filename = archivo.getPath();
-        Archivo a = new Archivo();
+        
+        if((archivo.getName()).contains(".txt")){
+        String filename = archivo.getPath();     
+
         grafox = a.armarGrafo(filename);
-        try{
-            FileReader fr = new FileReader (archivo);
-            BufferedReader br = new BufferedReader(fr);
-            String texto = "";
-            String linea = "";
-            while(((linea = br.readLine())!=null)){
-                texto+= linea+"\n";
-            }
-            archivotxt.setText(texto);
-            JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
-        }catch(Exception e){
+
+            if(grafox != null){
             
+                try{
+                    FileReader fr = new FileReader (archivo);
+                    BufferedReader br = new BufferedReader(fr);
+                    String texto = "";
+                    String linea = "";
+                    while(((linea = br.readLine())!=null)){
+                        texto+= linea+"\n";
+                    }
+                    archivotxt.setText(texto);
+                    JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
+                    }
+                }
+            
+            else{
+                JOptionPane.showMessageDialog(null, "Ingrese un archivo válido");
+            }
         }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "Error, no es archivo txt. Ingrese un archivo válido");
+        }
+        
     }//GEN-LAST:event_selectActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

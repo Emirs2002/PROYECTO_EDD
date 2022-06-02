@@ -11,29 +11,12 @@ public class main {
      */
     public static void main(String[] args) {
 
-        Archivo a = new Archivo();
-        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
-        
-//-----------------------------------------------------------------------------
-        
-//        int[] prueba = Recorrido.recorrerAnchura(grafo, "E");
-//        
-//        for (int i = 0; i < prueba.length; i++) {
-//            System.out.print(prueba[i]);
-//        }
-        
-
-//-----------------------------------------------------------------------------
-//        
-//        int[] prueba = Recorrido.recorrerProfundidad(grafo, "D");
-//        
-//        for (int i = 0; i < prueba.length; i++) {
-//            System.out.print(prueba[i]);
-//        }
+//        Archivo a = new Archivo();
+//        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
 
 //
-//        Interfaz ventana = new Interfaz();
-//        ventana.setVisible(true);
+        Interfaz ventana = new Interfaz();
+        ventana.setVisible(true);
 
     }
     

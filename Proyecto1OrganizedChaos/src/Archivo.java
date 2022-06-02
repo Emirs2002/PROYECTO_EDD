@@ -16,14 +16,15 @@ public class Archivo {
     /**
     *
     * @author ERodriguez
-    * @version 28/05/2022
+    * @version 02/06/2022
     * @return devuelve el grafo con la información del archivo txt
     */
     public GrafoMAdy armarGrafo(String dir){
         GrafoMAdy grafo = null;
+       
         
         try{
-           
+                      
             BufferedReader bf = new BufferedReader(new FileReader(dir));
             
             String temp = "";
@@ -173,7 +174,8 @@ public class Archivo {
 
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"ERROR, NO SE PUDO CREAR EL GRAFO");
+            return null;
         }
-        return grafo;
+       
     }    
 }
