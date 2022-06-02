@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ASantos
+ * @author alesc
  */
 public class Lista {
     

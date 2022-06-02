@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author ERodríguez
+ * version: 01/06/22
  */
 public class GrafoMAdy {
     //Número de vértices
@@ -59,6 +60,14 @@ public class GrafoMAdy {
     
     public void setVerts(Vertice[] verts){
         this.verts = verts;
+    }
+    
+    public int[][] getmatAdy() {
+        return matAdy;
+    }
+
+    public void setmatAdy(int[][] matAdy) {
+        this.matAdy = matAdy;
     }
 
   
