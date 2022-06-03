@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ASantos
+ * @author alesc
  */
 public class Lista {
     
@@ -99,6 +99,29 @@ public class Lista {
    
             }
         }
+    
+    public String obtenerInfo(){
+        Nodo temp = pfirst;
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{
+            String print = "";             
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+
+                print += temp.getData().getNombre() + ":" + " " + temp.getData().getCantidad() +"\n";
+                
+                temp = proximoNodo(temp);               
+                
+               }
+            
+            return print;
+            }
+        return null;            
+        
+        }
+    
     
     //AÑADIR Y BORRAR AL INICIO
     public void addAtStart(Nodo nodito){

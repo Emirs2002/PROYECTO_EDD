@@ -15,12 +15,13 @@ public class Recorrido {
     * @param grafo grafo con la informacion del txt
     * @return arreglo con las posiciones de los vertices
     */
-    public static int[] recorrerAnchura(GrafoMAdy grafo, String nombre){
+    public static String recorrerAnchura(GrafoMAdy grafo, String nombre){
         int valOrigen;
         Integer w = null;
         int intW;
         int[] arrVisitados = null;
         Vertice[] verts = grafo.getVerts(); //arreglo con los vertices del grafo
+        String temp = "";
         
                 
         try{
@@ -48,8 +49,13 @@ public class Recorrido {
                         
                         w = (Integer) cola.desencolar();                     
                         intW = w;
-                        System.out.println("Vertice" + verts[intW].getNombre() + "visitado");
+//                      System.out.println("Vertice" + verts[intW].getNombre() + "visitado");
+                        Vertice vert = verts[intW];
+                        Lista lista = vert.getProductos();
+                        
+                        temp += "Almacen" + " " + vert.getNombre() + "\n" + lista.obtenerInfo() + "\n";
                     
+                    //Se encolan los adyacentes
                     for (int j = 0; j < grafo.getNumVerts(); j++) {
                         if((w != j) && (grafo.existeArista(w, j) && arrVisitados[j] == -1)){ //Utilizar la funcion de añadir a la matriz                            
                             int valNodo = verts[j].getIndex();
@@ -59,28 +65,26 @@ public class Recorrido {
                         }
                     }
                 }
-                
-            }
             
-            return arrVisitados;
+            }
+            return temp;
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo");
         }
-        
-    return arrVisitados;
-        
-        
+        return temp;        
+   
     } 
 
 
 
-    public static int[] recorrerProfundidad(GrafoMAdy grafo, String nombre){
+    public static String recorrerProfundidad(GrafoMAdy grafo, String nombre){
         int valOrigen, valSig = 0;       
         int[] arrVisitados = null;
         Vertice[] verts = grafo.getVerts();
         Pila pila = new Pila();
         arrVisitados = new int[grafo.getNumVerts()];
+        String temp = "";
         
         try{
             valOrigen = grafo.buscarIndex(nombre);
@@ -99,8 +103,12 @@ public class Recorrido {
                 Integer sig;
                 sig = (Integer) pila.desapilar();
                 valSig = sig;
-                System.out.println("Vertice" + " " + verts[valSig].getNombre()+ " " + "visitado");
-            
+//                System.out.println("Vertice" + " " + verts[valSig].getNombre()+ " " + "visitado");
+                
+                Vertice vert = verts[valSig];
+                Lista lista = vert.getProductos();
+                temp += "Almacen" + " " + vert.getNombre() + "\n" + lista.obtenerInfo() + "\n";
+                
                 for (int j = 0; j < grafo.getNumVerts(); j++){
                     if((valSig != j) && (grafo.existeArista(valSig, j) && arrVisitados[j] == -1)){
                         int valNodo = verts[j].getIndex();
@@ -110,6 +118,7 @@ public class Recorrido {
                 }
             }
             
+            return temp;
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo");
@@ -117,6 +126,6 @@ public class Recorrido {
         
         
         
-    return arrVisitados;
+    return temp;
     }
 }

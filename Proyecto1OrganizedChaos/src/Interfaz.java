@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author simon
  */
 public class Interfaz extends javax.swing.JFrame {
-    protected GrafoMAdy grafox;
+    protected GrafoMAdy grafox = null;
 
     /**
      * Creates new form Interfaz
@@ -48,7 +48,16 @@ public class Interfaz extends javax.swing.JFrame {
         archivotxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         select = new javax.swing.JButton();
+        volverCarga = new javax.swing.JButton();
         disponibilidadpanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        dispoOrigen = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bRecorrer = new javax.swing.JButton();
+        volverDispo = new javax.swing.JButton();
+        outputAnchura = new javax.swing.JTextArea();
+        outputProfundidad = new javax.swing.JTextArea();
         pedidopanel = new javax.swing.JPanel();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
@@ -56,12 +65,15 @@ public class Interfaz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         cargararchivo.setText("Cargar Archivo ");
         cargararchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargararchivoActionPerformed(evt);
             }
         });
+        MenuPanel.add(cargararchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 200, 40));
 
         disponibilidad.setText("Disponibilidad de Productos ");
         disponibilidad.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +81,7 @@ public class Interfaz extends javax.swing.JFrame {
                 disponibilidadActionPerformed(evt);
             }
         });
+        MenuPanel.add(disponibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 200, 40));
 
         realizarpedido.setText("Realizar Pedido ");
         realizarpedido.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +89,7 @@ public class Interfaz extends javax.swing.JFrame {
                 realizarpedidoActionPerformed(evt);
             }
         });
+        MenuPanel.add(realizarpedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 200, 40));
 
         gestion.setText("Gestion de Alamacenes");
         gestion.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +97,7 @@ public class Interfaz extends javax.swing.JFrame {
                 gestionActionPerformed(evt);
             }
         });
+        MenuPanel.add(gestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 40));
 
         grafo.setText("Grafo ");
         grafo.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +105,7 @@ public class Interfaz extends javax.swing.JFrame {
                 grafoActionPerformed(evt);
             }
         });
+        MenuPanel.add(grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 40));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,46 +113,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
-        MenuPanel.setLayout(MenuPanelLayout);
-        MenuPanelLayout.setHorizontalGroup(
-            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(cargararchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(disponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(realizarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(gestion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(610, 610, 610)
-                .addComponent(jButton1))
-        );
-        MenuPanelLayout.setVerticalGroup(
-            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(cargararchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(disponibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(realizarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(gestion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton1))
-        );
+        MenuPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, -1, -1));
 
         TabbedPane.addTab("Menu", MenuPanel);
 
@@ -159,9 +136,54 @@ public class Interfaz extends javax.swing.JFrame {
         });
         cargartxtpanel.add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 71, 120, -1));
 
+        volverCarga.setText("Volver");
+        volverCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverCargaActionPerformed(evt);
+            }
+        });
+        cargartxtpanel.add(volverCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, 30));
+
         TabbedPane.addTab("Cargar Archivo ", cargartxtpanel);
 
         disponibilidadpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Ingrese el almacén de origen:");
+        disponibilidadpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        disponibilidadpanel.add(dispoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 60, 40));
+
+        jLabel3.setText("Recorrido de profundidad");
+        disponibilidadpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+
+        jLabel5.setText("Recorrido en anchura");
+        disponibilidadpanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        bRecorrer.setText("Recorrer almacenes");
+        bRecorrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRecorrerActionPerformed(evt);
+            }
+        });
+        disponibilidadpanel.add(bRecorrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 80));
+
+        volverDispo.setText("Volver");
+        volverDispo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverDispoActionPerformed(evt);
+            }
+        });
+        disponibilidadpanel.add(volverDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
+
+        outputAnchura.setColumns(20);
+        outputAnchura.setRows(5);
+        outputAnchura.setFocusable(false);
+        disponibilidadpanel.add(outputAnchura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 180, 260));
+
+        outputProfundidad.setColumns(20);
+        outputProfundidad.setRows(5);
+        outputProfundidad.setFocusable(false);
+        disponibilidadpanel.add(outputProfundidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 180, 260));
+
         TabbedPane.addTab("Disponibilidad", disponibilidadpanel);
 
         pedidopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -269,6 +291,40 @@ public class Interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void volverDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverDispoActionPerformed
+        TabbedPane.setSelectedIndex(0);
+    }//GEN-LAST:event_volverDispoActionPerformed
+
+    private void bRecorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRecorrerActionPerformed
+        String temp = "";
+        
+        if(grafox != null){
+            try{
+                String origen = dispoOrigen.getText();
+
+                temp = Recorrido.recorrerAnchura(grafox, origen);
+
+                outputAnchura.setText(temp);
+
+
+                temp = Recorrido.recorrerProfundidad(grafox, origen);
+
+                outputProfundidad.setText(temp);
+
+            }catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, "Error, recorrido fallido");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error, no ha cargado la información.");
+        }
+    }//GEN-LAST:event_bRecorrerActionPerformed
+
+    private void volverCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverCargaActionPerformed
+        TabbedPane.setSelectedIndex(0);
+    }//GEN-LAST:event_volverCargaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,8 +365,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JTabbedPane TabbedPane;
     private javax.swing.JTextArea archivotxt;
+    private javax.swing.JButton bRecorrer;
     private javax.swing.JButton cargararchivo;
     private javax.swing.JPanel cargartxtpanel;
+    private javax.swing.JTextField dispoOrigen;
     private javax.swing.JButton disponibilidad;
     private javax.swing.JPanel disponibilidadpanel;
     private javax.swing.JButton gestion;
@@ -319,9 +377,16 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea outputAnchura;
+    private javax.swing.JTextArea outputProfundidad;
     private javax.swing.JPanel pedidopanel;
     private javax.swing.JButton realizarpedido;
     private javax.swing.JButton select;
+    private javax.swing.JButton volverCarga;
+    private javax.swing.JButton volverDispo;
     // End of variables declaration//GEN-END:variables
 }

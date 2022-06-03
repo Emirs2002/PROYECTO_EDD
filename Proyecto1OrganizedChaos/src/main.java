@@ -11,13 +11,11 @@ public class main {
      */
     public static void main(String[] args) {
 
-//        Archivo a = new Archivo();
-//        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
 
-//
+
         Interfaz ventana = new Interfaz();
         ventana.setVisible(true);
-
+   
     }
     
     
