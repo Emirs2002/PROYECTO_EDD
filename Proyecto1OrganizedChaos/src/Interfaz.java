@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author simon
+ * @version 03/06/2022
  */
 public class Interfaz extends javax.swing.JFrame {
     protected GrafoMAdy grafox = null;
@@ -56,8 +57,10 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         bRecorrer = new javax.swing.JButton();
         volverDispo = new javax.swing.JButton();
-        outputAnchura = new javax.swing.JTextArea();
-        outputProfundidad = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        outputAnchura = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        outputProfundidad = new javax.swing.JTextPane();
         pedidopanel = new javax.swing.JPanel();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
@@ -174,15 +177,13 @@ public class Interfaz extends javax.swing.JFrame {
         });
         disponibilidadpanel.add(volverDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
 
-        outputAnchura.setColumns(20);
-        outputAnchura.setRows(5);
-        outputAnchura.setFocusable(false);
-        disponibilidadpanel.add(outputAnchura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 180, 260));
+        jScrollPane2.setViewportView(outputAnchura);
 
-        outputProfundidad.setColumns(20);
-        outputProfundidad.setRows(5);
-        outputProfundidad.setFocusable(false);
-        disponibilidadpanel.add(outputProfundidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 180, 260));
+        disponibilidadpanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 170, 250));
+
+        jScrollPane3.setViewportView(outputProfundidad);
+
+        disponibilidadpanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 170, 250));
 
         TabbedPane.addTab("Disponibilidad", disponibilidadpanel);
 
@@ -308,7 +309,7 @@ public class Interfaz extends javax.swing.JFrame {
 
 
                 temp = Recorrido.recorrerProfundidad(grafox, origen);
-
+                
                 outputProfundidad.setText(temp);
 
             }catch(Exception e){
@@ -381,8 +382,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea outputAnchura;
-    private javax.swing.JTextArea outputProfundidad;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane outputAnchura;
+    private javax.swing.JTextPane outputProfundidad;
     private javax.swing.JPanel pedidopanel;
     private javax.swing.JButton realizarpedido;
     private javax.swing.JButton select;

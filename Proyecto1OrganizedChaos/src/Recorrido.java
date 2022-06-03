@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author ERodríguez
- * @version 30/05/2022
+ * @version 03/06/2022
  */
 public class Recorrido {
     
@@ -70,7 +70,7 @@ public class Recorrido {
             return temp;
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo");
+            JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo [Anchura]");
         }
         return temp;        
    
@@ -121,7 +121,7 @@ public class Recorrido {
             return temp;
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo");
+            JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo [Profundidad]");
             }
         
         

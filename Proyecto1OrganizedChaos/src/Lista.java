@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author alesc
+ * @version 03/06/2022
  */
 public class Lista {
     
@@ -100,6 +101,9 @@ public class Lista {
             }
         }
     
+    /*
+    *@return la información de los productos de la lista
+    */
     public String obtenerInfo(){
         Nodo temp = pfirst;
         if (this.isEmpty()){
