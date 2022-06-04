@@ -62,11 +62,33 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         outputProfundidad = new javax.swing.JTextPane();
         pedidopanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Anchura = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        profundidad = new javax.swing.JTextPane();
+        hacerPedido = new javax.swing.JButton();
+        inputProducto = new javax.swing.JTextField();
+        outputCantidad = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        menosB = new javax.swing.JButton();
+        masB = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        outputProductos = new javax.swing.JTextPane();
+        addProduct = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        verStock = new javax.swing.JButton();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 102));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -116,7 +138,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        MenuPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, -1, -1));
+        MenuPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 100, 40));
 
         TabbedPane.addTab("Menu", MenuPanel);
 
@@ -124,6 +146,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         archivotxt.setColumns(20);
         archivotxt.setRows(5);
+        archivotxt.setFocusable(false);
         jScrollPane1.setViewportView(archivotxt);
 
         cargartxtpanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 71, 327, 194));
@@ -188,16 +211,95 @@ public class Interfaz extends javax.swing.JFrame {
         TabbedPane.addTab("Disponibilidad", disponibilidadpanel);
 
         pedidopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Anchura.setFocusable(false);
+        jScrollPane4.setViewportView(Anchura);
+
+        pedidopanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 140, 210));
+
+        profundidad.setFocusable(false);
+        jScrollPane5.setViewportView(profundidad);
+
+        pedidopanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 140, 210));
+
+        hacerPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        hacerPedido.setText("Realizar pedido");
+        pedidopanel.add(hacerPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 140, 50));
+        pedidopanel.add(inputProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, 50));
+
+        outputCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        outputCantidad.setText("0");
+        outputCantidad.setFocusable(false);
+        pedidopanel.add(outputCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 70, 40));
+
+        jLabel6.setText("Producto");
+        pedidopanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 60, -1));
+
+        jLabel7.setText("Cantidad");
+        pedidopanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+
+        menosB.setText("-");
+        menosB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menosBActionPerformed(evt);
+            }
+        });
+        pedidopanel.add(menosB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 50, 40));
+
+        masB.setText("+");
+        masB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masBActionPerformed(evt);
+            }
+        });
+        pedidopanel.add(masB, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 50, 40));
+
+        outputProductos.setFocusable(false);
+        jScrollPane6.setViewportView(outputProductos);
+
+        pedidopanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 150, 180));
+
+        addProduct.setText("Añadir ");
+        addProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProductActionPerformed(evt);
+            }
+        });
+        pedidopanel.add(addProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, 30));
+
+        jLabel8.setText("Lista de productos");
+        pedidopanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 110, -1));
+
+        jLabel9.setText("Introduzca un producto y su respectiva cantidad");
+        pedidopanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+
+        jLabel10.setText("Stock");
+        pedidopanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        jLabel11.setText("Anchura");
+        pedidopanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+
+        jLabel12.setText("Profundidad");
+        pedidopanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+
+        verStock.setText("Ver stock");
+        verStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verStockActionPerformed(evt);
+            }
+        });
+        pedidopanel.add(verStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 90, 30));
+
         TabbedPane.addTab("Pedido", pedidopanel);
 
         gestionpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        TabbedPane.addTab("Gestion Alamacenes ", gestionpanel);
+        TabbedPane.addTab("Gestion Almacenes ", gestionpanel);
 
         javax.swing.GroupLayout GrafoPanelLayout = new javax.swing.GroupLayout(GrafoPanel);
         GrafoPanel.setLayout(GrafoPanelLayout);
         GrafoPanelLayout.setHorizontalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
         GrafoPanelLayout.setVerticalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,22 +308,12 @@ public class Interfaz extends javax.swing.JFrame {
 
         TabbedPane.addTab("Grafo", GrafoPanel);
 
-        jLabel1.setText("EQUIPO SUR ");
+        getContentPane().add(TabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TabbedPane)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("EQUIPO SUR ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 750, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -302,13 +394,13 @@ public class Interfaz extends javax.swing.JFrame {
         if(grafox != null){
             try{
                 String origen = dispoOrigen.getText();
-
-                temp = Recorrido.recorrerAnchura(grafox, origen);
+                
+                temp = Recorrido.recorrerAnchura(grafox, origen.toUpperCase());
 
                 outputAnchura.setText(temp);
 
 
-                temp = Recorrido.recorrerProfundidad(grafox, origen);
+                temp = Recorrido.recorrerProfundidad(grafox, origen.toUpperCase());
                 
                 outputProfundidad.setText(temp);
 
@@ -325,6 +417,78 @@ public class Interfaz extends javax.swing.JFrame {
     private void volverCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverCargaActionPerformed
         TabbedPane.setSelectedIndex(0);
     }//GEN-LAST:event_volverCargaActionPerformed
+
+    private void menosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosBActionPerformed
+        
+        if(Integer.parseInt(outputCantidad.getText()) != 0){
+            int cantidad = Integer.parseInt(outputCantidad.getText());
+        
+            int suma = cantidad - 1;
+
+            outputCantidad.setText(Integer.toString(suma));
+        }
+        else{
+            outputCantidad.setText("0");
+        }
+    }//GEN-LAST:event_menosBActionPerformed
+
+    private void masBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masBActionPerformed
+        int cantidad = Integer.parseInt(outputCantidad.getText());
+        
+        int suma = cantidad + 1;
+        
+        outputCantidad.setText(Integer.toString(suma));
+        
+    }//GEN-LAST:event_masBActionPerformed
+
+    private void verStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verStockActionPerformed
+        String temp = "";
+        
+        if(grafox != null){               
+
+                temp = Recorrido.recorrerAnchura(grafox, "A");
+
+                Anchura.setText(temp);
+
+                temp = Recorrido.recorrerProfundidad(grafox, "A");
+                
+                profundidad.setText(temp);
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error, no ha cargado la información.");
+        }
+    }//GEN-LAST:event_verStockActionPerformed
+
+    private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
+        String producto = inputProducto.getText();       
+        String cantidad = outputCantidad.getText();
+        String panel = outputProductos.getText();
+        String lista = "";
+        
+        if(!producto.equals("") && !cantidad.equals("0")){
+            lista += producto+ ":" + cantidad;
+            if(!panel.equals("")){
+                outputProductos.setText(panel + "\n" + lista );
+                inputProducto.setText("");
+                outputCantidad.setText("0");
+            }
+            else{
+                outputProductos.setText(lista);
+                inputProducto.setText("");
+                outputCantidad.setText("0");
+            }
+        }
+        else if(producto.equals("") && !cantidad.equals("0")){
+            JOptionPane.showMessageDialog(null, "Error, campo producto vacío.");
+        }
+        else if(!producto.equals("") && cantidad.equals("0")){
+            JOptionPane.showMessageDialog(null, "Error, campo cantidad vacío.");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Campo cantidad y campo producto vacío.");
+        }
+    }//GEN-LAST:event_addProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,9 +526,11 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane Anchura;
     private javax.swing.JPanel GrafoPanel;
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JTabbedPane TabbedPane;
+    private javax.swing.JButton addProduct;
     private javax.swing.JTextArea archivotxt;
     private javax.swing.JButton bRecorrer;
     private javax.swing.JButton cargararchivo;
@@ -375,20 +541,38 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton gestion;
     private javax.swing.JPanel gestionpanel;
     private javax.swing.JButton grafo;
+    private javax.swing.JButton hacerPedido;
+    private javax.swing.JTextField inputProducto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JButton masB;
+    private javax.swing.JButton menosB;
     private javax.swing.JTextPane outputAnchura;
+    private javax.swing.JTextField outputCantidad;
+    private javax.swing.JTextPane outputProductos;
     private javax.swing.JTextPane outputProfundidad;
     private javax.swing.JPanel pedidopanel;
+    private javax.swing.JTextPane profundidad;
     private javax.swing.JButton realizarpedido;
     private javax.swing.JButton select;
+    private javax.swing.JButton verStock;
     private javax.swing.JButton volverCarga;
     private javax.swing.JButton volverDispo;
     // End of variables declaration//GEN-END:variables
