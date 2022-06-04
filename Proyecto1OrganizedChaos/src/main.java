@@ -17,6 +17,7 @@ public class main {
 //        grafo.printMatriz();
 //        Vertice[] e = grafo.getVerts();
 //        RutaMinima rout = new RutaMinima(grafo, e[0]);
+//        rout.conseguirRuta();
         
         
         
