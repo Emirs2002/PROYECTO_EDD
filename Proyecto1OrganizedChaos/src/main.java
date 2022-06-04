@@ -15,11 +15,11 @@ public class main {
         Archivo a = new Archivo();
         GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
         
-        grafo.printMatriz();
-        Vertice[] e = grafo.getVerts();
-        RutaMinima rout = new RutaMinima(grafo, e[0]);
-        rout.conseguirRuta();
-        
+//        grafo.printMatriz();
+//        Vertice[] e = grafo.getVerts();
+//        RutaMinima rout = new RutaMinima(grafo, e[0]);
+//        rout.conseguirRuta();
+//        
         
         
         
@@ -33,7 +33,7 @@ public class main {
         
 
 
-
+//
 //        Interfaz ventana = new Interfaz();
 //        ventana.setVisible(true);
    
