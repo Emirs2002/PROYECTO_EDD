@@ -17,7 +17,8 @@ public class RutaMinima {
     int o; //verice origen
     int n; //numero de vertices 
     int [] hilera; //lista para iterar sobre la matriz de adyaciencias.
-    int infinito;
+    int infinito; //valor maximo que trabaja como infinito.
+    int [] visitados; //lista que determina que filas han sido visitadas.
     
     
     //CONSTRUCTOR:
@@ -28,10 +29,13 @@ public class RutaMinima {
         pivote = grafo.tamanho();
         infinito = grafo.tamanho();//EL TAMANHO VA A FUNCIONAR COMO NUESTRO INFINITO
         o = x.getIndex();
+        visitados = new int[n];
+        
         
         for(int i = 0; i < n; i++) //AQUI SE CAMBIAN TODOS LOS CEROS DE LA MATRIZ POR EL TAMANHO DEL GRAFO.
         {
-                for(int j = 0; j<n; j++)
+        visitados[i]=0; 
+            for(int j = 0; j<n; j++)
                 {
                     if(matriz[i][j] == 0)
                     {
@@ -42,30 +46,33 @@ public class RutaMinima {
 
         rutaFinal = matriz[o]; //SELECCIONA LA FILA DE LA MATRIZ DEL VERTICE ORIGEN.
         rutaFinal[o] = 0; //DECLARA EL PESO DEL ORIGEN AL ORIGEN EN CERO.
-        hilera = matriz[0]; //TOMA LA PRIMERA FILA DE LA MATRIZ PARA ITERAR CON HILERA.
+        visitados[o]=1; //DECLARA LA FILA DEL EL ORIGEN COMO VISITADO.
         
     }
     
     
     public void conseguirRuta()
     {
-        for(int contador = 0; contador<n; contador++)  //ESTE CONTADOR SE UTILIZARA PARA CAMBIAR LA FILA DE LA MATRIZ CONFORME SE AVANCE
-        {       
-        hilera = matriz[contador];
-            if(rutaFinal[contador]!= infinito) //SI EL ELEMENTO DE LA FILA DEL VETICE DE ORIGEN NO ES INFINITO (tamanho) ES SELECCIONADO COMO PIVOTE.
-                {
-                    pivote = rutaFinal[contador]; 
-                    
-                    for(int x = 0; x<n; x++) //COMPARA CADA ELEMENTO DE LA RUTAFINAL CON LA SUMA DEL PIVOTE QUE SE ACARREA CON LA HILERA.
-                    {       
-                        if(pivote + hilera[x] < rutaFinal[x]) 
-                        {
-                            rutaFinal[x] = pivote + hilera[x]; 
-                        }
+        for(int v = 0; v<n; v++) //ESTE FOR HACE QUE LA FUNCIO SE REPITA EL NUMEOR DE VERTICES, DE ESTA MANERA SE RECORRE TODA LA MATRIZ.
+        {
+            for(int i = 0; i<n; i++) //ESTE FOR RECORRE LA FILA DE LA RUTA PARA ENCONTRAR LOS PIVOTES.
+            {
+                if(rutaFinal[i]!= infinito && visitados[i]==0)
+                    {
+                        pivote=rutaFinal[i];
+                        hilera = matriz[i];
+                        visitados[i]=1;
+                        break;
                     }
-                }    
+            }
+            for(int x=0; x<n;x++) //ESTE FOR RECORRE LA HILERA RESPECTIVA PARA HACER LOS CAMBIOS EN LA RUTA FINAL SI SON NECESARIOS.
+            {
+                if(pivote + hilera[x] < rutaFinal[x])
+                {
+                    rutaFinal[x] = pivote + hilera[x]; 
+                }
+            }    
         }
-            
         for(int i =0; i<n; i++)
         {
             System.out.println(o + " to " + i +" = "+rutaFinal[i]);
