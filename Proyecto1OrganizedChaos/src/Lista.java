@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author alesc
+ * @version 03/06/2022
  */
 public class Lista {
     
@@ -99,6 +100,32 @@ public class Lista {
    
             }
         }
+    
+    /*
+    *@return la información de los productos de la lista
+    */
+    public String obtenerInfo(){
+        Nodo temp = pfirst;
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{
+            String print = "";             
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+
+                print += temp.getData().getNombre() + ":" + " " + temp.getData().getCantidad() +"\n";
+                
+                temp = proximoNodo(temp);               
+                
+               }
+            
+            return print;
+            }
+        return null;            
+        
+        }
+    
     
     //AÑADIR Y BORRAR AL INICIO
     public void addAtStart(Nodo nodito){

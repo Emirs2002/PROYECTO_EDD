@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *
  * @author alesc
- * version: 03/06/22
+ * version: 04/06/22
  * 
  */
 public class RutaMinima {
@@ -14,7 +10,7 @@ public class RutaMinima {
     int [][] matriz; //matriz de adyaciencias.
     int pivote; //peso que se acarrea.
     int [] rutaFinal; //lista del peso minimo de cada ruta desde el origen.
-    int o; //verice origen
+    int o; //vertice origen
     int n; //numero de vertices 
     int [] hilera; //lista para iterar sobre la matriz de adyaciencias.
     int infinito; //valor maximo que trabaja como infinito.
