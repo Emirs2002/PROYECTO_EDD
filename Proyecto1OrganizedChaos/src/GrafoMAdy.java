@@ -19,6 +19,9 @@ public class GrafoMAdy {
     
     //Forma la matriz
     private int [][] matAdy;
+    
+    //Todos los productos
+    private String [] totalProductos;
 
 
       
@@ -252,5 +255,28 @@ public class GrafoMAdy {
         }
         return gSal;
     }
+    
+     public String [] ProductosTotal()
+    {
+        Vertice x = new Vertice(null);
+        int contador = 0;
+        String temp = " ";
+        for(int i = 0; i<numVerts; i++)
+        {
+            x = verts[i];
+            Lista list = x.getProductos();
+            contador += list.getTamanho();
+            temp += list.ObtenerNombre();
+        }
+        totalProductos = new String [contador];
+        String [] aux = new String [contador];
+        aux = temp.split(";");
+        for(int k = 1; k<aux.length-1; k++)
+        {
+           totalProductos[k]=aux[k];
+        }
+       return totalProductos;
+    }
+    
     
 }

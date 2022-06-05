@@ -71,7 +71,6 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         profundidad = new javax.swing.JTextPane();
         hacerPedido = new javax.swing.JButton();
-        inputProducto = new javax.swing.JTextField();
         outputCantidad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -79,6 +78,7 @@ public class Interfaz extends javax.swing.JFrame {
         masB = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         outputProductos = new javax.swing.JTextPane();
+        Productos = new javax.swing.JComboBox<>();
         addProduct = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -246,7 +246,6 @@ public class Interfaz extends javax.swing.JFrame {
         hacerPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hacerPedido.setText("Realizar pedido");
         pedidopanel.add(hacerPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 140, 50));
-        pedidopanel.add(inputProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, 50));
 
         outputCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         outputCantidad.setText("0");
@@ -281,6 +280,9 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane6.setViewportView(outputProductos);
 
         pedidopanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 150, 180));
+
+        Productos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pedidopanel.add(Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 90, 30));
 
         addProduct.setText("Añadir ");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -385,6 +387,12 @@ public class Interfaz extends javax.swing.JFrame {
                     }
                     archivotxt.setText(texto);
                     JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
+                    Productos.removeAllItems();
+                    for(int i =1; i<grafox.ProductosTotal().length; i++)
+                    {
+                        Productos.addItem(grafox.ProductosTotal()[i]);
+                        
+                    }
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
                     }
@@ -482,7 +490,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_verStockActionPerformed
 
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
-        String producto = inputProducto.getText();       
+        Object producto = Productos.getSelectedItem();       
         String cantidad = outputCantidad.getText();
         String panel = outputProductos.getText();
         String lista = "";
@@ -491,12 +499,12 @@ public class Interfaz extends javax.swing.JFrame {
             lista += producto+ ":" + cantidad;
             if(!panel.equals("")){
                 outputProductos.setText(panel + "\n" + lista );
-                inputProducto.setText("");
+                
                 outputCantidad.setText("0");
             }
             else{
                 outputProductos.setText(lista);
-                inputProducto.setText("");
+               
                 outputCantidad.setText("0");
             }
         }
@@ -550,6 +558,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextPane Anchura;
     private javax.swing.JPanel GrafoPanel;
     private javax.swing.JPanel MenuPanel;
+    private javax.swing.JComboBox<String> Productos;
     private javax.swing.JTabbedPane TabbedPane;
     private javax.swing.JButton addProduct;
     private javax.swing.JTextArea archivotxt;
@@ -563,7 +572,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel gestionpanel;
     private javax.swing.JButton grafo;
     private javax.swing.JButton hacerPedido;
-    private javax.swing.JTextField inputProducto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
