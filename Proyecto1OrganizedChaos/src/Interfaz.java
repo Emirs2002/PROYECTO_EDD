@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz extends javax.swing.JFrame {
     protected GrafoMAdy grafox = null;
-    Lista almacenes = new Lista();
 
     /**
      * Creates new form Interfaz
@@ -45,6 +44,8 @@ public class Interfaz extends javax.swing.JFrame {
         gestion = new javax.swing.JButton();
         grafo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         cargartxtpanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         archivotxt = new javax.swing.JTextArea();
@@ -66,12 +67,18 @@ public class Interfaz extends javax.swing.JFrame {
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        TabbedPane.setBackground(new java.awt.Color(51, 153, 255));
+
+        MenuPanel.setBackground(new java.awt.Color(51, 153, 255));
         MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cargararchivo.setBackground(new java.awt.Color(255, 204, 51));
         cargararchivo.setText("Cargar Archivo ");
         cargararchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +87,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         MenuPanel.add(cargararchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 200, 40));
 
+        disponibilidad.setBackground(new java.awt.Color(255, 204, 51));
         disponibilidad.setText("Disponibilidad de Productos ");
         disponibilidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +96,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         MenuPanel.add(disponibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 200, 40));
 
+        realizarpedido.setBackground(new java.awt.Color(255, 204, 51));
         realizarpedido.setText("Realizar Pedido ");
         realizarpedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +105,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         MenuPanel.add(realizarpedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 200, 40));
 
+        gestion.setBackground(new java.awt.Color(255, 204, 51));
         gestion.setText("Gestion de Alamacenes");
         gestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +114,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         MenuPanel.add(gestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 40));
 
+        grafo.setBackground(new java.awt.Color(255, 204, 51));
         grafo.setText("Grafo ");
         grafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,16 +123,25 @@ public class Interfaz extends javax.swing.JFrame {
         });
         MenuPanel.add(grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 40));
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 51));
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        MenuPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, -1, -1));
+        MenuPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/airplane2.0.png"))); // NOI18N
+        MenuPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, 260));
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel6.setText("Welcome to Surazon.com");
+        MenuPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 250, -1));
 
         TabbedPane.addTab("Menu", MenuPanel);
 
+        cargartxtpanel.setBackground(new java.awt.Color(51, 153, 255));
         cargartxtpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         archivotxt.setColumns(20);
@@ -130,9 +150,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         cargartxtpanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 71, 327, 194));
 
-        jLabel2.setText("Seleccione el archivo de texto al cual le desea cargar los datos.");
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel2.setText("Seleccione el archivo de texto al cual le desea cargar los datos...");
         cargartxtpanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 16, -1, 43));
 
+        select.setBackground(new java.awt.Color(255, 204, 51));
         select.setText("seleccionar");
         select.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +163,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         cargartxtpanel.add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 71, 120, -1));
 
+        volverCarga.setBackground(new java.awt.Color(255, 204, 51));
         volverCarga.setText("Volver");
         volverCarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,18 +174,23 @@ public class Interfaz extends javax.swing.JFrame {
 
         TabbedPane.addTab("Cargar Archivo ", cargartxtpanel);
 
+        disponibilidadpanel.setBackground(new java.awt.Color(51, 153, 255));
         disponibilidadpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setText("Ingrese el almacén de origen:");
         disponibilidadpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
         disponibilidadpanel.add(dispoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 60, 40));
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel3.setText("Recorrido de profundidad");
         disponibilidadpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel5.setText("Recorrido en anchura");
         disponibilidadpanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
+        bRecorrer.setBackground(new java.awt.Color(255, 204, 51));
         bRecorrer.setText("Recorrer almacenes");
         bRecorrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +199,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         disponibilidadpanel.add(bRecorrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 80));
 
+        volverDispo.setBackground(new java.awt.Color(255, 204, 51));
         volverDispo.setText("Volver");
         volverDispo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,12 +218,17 @@ public class Interfaz extends javax.swing.JFrame {
 
         TabbedPane.addTab("Disponibilidad", disponibilidadpanel);
 
+        pedidopanel.setBackground(new java.awt.Color(51, 153, 255));
         pedidopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         TabbedPane.addTab("Pedido", pedidopanel);
 
+        gestionpanel.setBackground(new java.awt.Color(51, 153, 255));
         gestionpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         TabbedPane.addTab("Gestion Alamacenes ", gestionpanel);
 
+        GrafoPanel.setBackground(new java.awt.Color(51, 153, 255));
+
+        jButton2.setBackground(new java.awt.Color(255, 204, 51));
         jButton2.setText("Dibujar Grafo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,40 +236,72 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel7.setText("Para visualizar el grafo por favor oprima el boton...");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/map.png"))); // NOI18N
+
         javax.swing.GroupLayout GrafoPanelLayout = new javax.swing.GroupLayout(GrafoPanel);
         GrafoPanel.setLayout(GrafoPanelLayout);
         GrafoPanelLayout.setHorizontalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GrafoPanelLayout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jButton2)
-                .addContainerGap(471, Short.MAX_VALUE))
+                .addGroup(GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GrafoPanelLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel7))
+                    .addGroup(GrafoPanelLayout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel9)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         GrafoPanelLayout.setVerticalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GrafoPanelLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jButton2)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel7)
+                .addGroup(GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GrafoPanelLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(GrafoPanelLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel9)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         TabbedPane.addTab("Grafo", GrafoPanel);
 
-        jLabel1.setText("EQUIPO SUR ");
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 76, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(TabbedPane)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TabbedPane))
         );
 
         pack();
@@ -402,6 +468,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
