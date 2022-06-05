@@ -36,6 +36,7 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         TabbedPane = new javax.swing.JTabbedPane();
         MenuPanel = new javax.swing.JPanel();
         cargararchivo = new javax.swing.JButton();
@@ -67,7 +68,6 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         profundidad = new javax.swing.JTextPane();
         hacerPedido = new javax.swing.JButton();
-        inputProducto = new javax.swing.JTextField();
         outputCantidad = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -82,9 +82,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         verStock = new javax.swing.JButton();
+        Productos = new javax.swing.JComboBox<>();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 102));
@@ -224,8 +228,12 @@ public class Interfaz extends javax.swing.JFrame {
 
         hacerPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hacerPedido.setText("Realizar pedido");
+        hacerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hacerPedidoActionPerformed(evt);
+            }
+        });
         pedidopanel.add(hacerPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 140, 50));
-        pedidopanel.add(inputProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, 50));
 
         outputCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         outputCantidad.setText("0");
@@ -289,6 +297,9 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         pedidopanel.add(verStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 90, 30));
+
+        Productos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pedidopanel.add(Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
 
         TabbedPane.addTab("Pedido", pedidopanel);
 
@@ -364,6 +375,12 @@ public class Interfaz extends javax.swing.JFrame {
                     }
                     archivotxt.setText(texto);
                     JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
+                    Productos.removeAllItems();
+                    for(int i =1; i<grafox.ProductosTotal().length; i++)
+                    {
+                        Productos.addItem(grafox.ProductosTotal()[i]);
+                        
+                    }
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
                     }
@@ -461,7 +478,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_verStockActionPerformed
 
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
-        String producto = inputProducto.getText();       
+        Object producto = Productos.getSelectedItem();       
         String cantidad = outputCantidad.getText();
         String panel = outputProductos.getText();
         String lista = "";
@@ -470,12 +487,12 @@ public class Interfaz extends javax.swing.JFrame {
             lista += producto+ ":" + cantidad;
             if(!panel.equals("")){
                 outputProductos.setText(panel + "\n" + lista );
-                inputProducto.setText("");
+                //inputProducto.setText("");
                 outputCantidad.setText("0");
             }
             else{
                 outputProductos.setText(lista);
-                inputProducto.setText("");
+                //inputProducto.setText("");
                 outputCantidad.setText("0");
             }
         }
@@ -489,6 +506,10 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo cantidad y campo producto vacío.");
         }
     }//GEN-LAST:event_addProductActionPerformed
+
+    private void hacerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerPedidoActionPerformed
+        
+    }//GEN-LAST:event_hacerPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -529,6 +550,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextPane Anchura;
     private javax.swing.JPanel GrafoPanel;
     private javax.swing.JPanel MenuPanel;
+    private javax.swing.JComboBox<String> Productos;
     private javax.swing.JTabbedPane TabbedPane;
     private javax.swing.JButton addProduct;
     private javax.swing.JTextArea archivotxt;
@@ -542,7 +564,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel gestionpanel;
     private javax.swing.JButton grafo;
     private javax.swing.JButton hacerPedido;
-    private javax.swing.JTextField inputProducto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -556,6 +577,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

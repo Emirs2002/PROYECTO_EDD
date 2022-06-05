@@ -126,6 +126,28 @@ public class Lista {
         
         }
     
+        public String ObtenerNombre(){
+        Nodo temp = pfirst;
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{
+            String print = "";             
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+
+                print += temp.getData().getNombre() + " ; ";
+                
+                temp = proximoNodo(temp);               
+                
+               }
+            
+            return print;
+            }
+        return null;            
+        
+        }
+    
     
     //AÑADIR Y BORRAR AL INICIO
     public void addAtStart(Nodo nodito){
