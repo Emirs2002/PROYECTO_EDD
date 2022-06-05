@@ -13,15 +13,19 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author simon
+ * @version 03/06/2022
  */
 public class Interfaz extends javax.swing.JFrame {
-    protected GrafoMAdy grafox;
+    protected GrafoMAdy grafox = null;
+    Lista almacenes = new Lista();
 
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -46,10 +50,22 @@ public class Interfaz extends javax.swing.JFrame {
         archivotxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         select = new javax.swing.JButton();
+        volverCarga = new javax.swing.JButton();
         disponibilidadpanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        dispoOrigen = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bRecorrer = new javax.swing.JButton();
+        volverDispo = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        outputAnchura = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        outputProfundidad = new javax.swing.JTextPane();
         pedidopanel = new javax.swing.JPanel();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,9 +141,52 @@ public class Interfaz extends javax.swing.JFrame {
         });
         cargartxtpanel.add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 71, 120, -1));
 
+        volverCarga.setText("Volver");
+        volverCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverCargaActionPerformed(evt);
+            }
+        });
+        cargartxtpanel.add(volverCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, 30));
+
         TabbedPane.addTab("Cargar Archivo ", cargartxtpanel);
 
         disponibilidadpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Ingrese el almacén de origen:");
+        disponibilidadpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        disponibilidadpanel.add(dispoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 60, 40));
+
+        jLabel3.setText("Recorrido de profundidad");
+        disponibilidadpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+
+        jLabel5.setText("Recorrido en anchura");
+        disponibilidadpanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        bRecorrer.setText("Recorrer almacenes");
+        bRecorrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRecorrerActionPerformed(evt);
+            }
+        });
+        disponibilidadpanel.add(bRecorrer, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 80));
+
+        volverDispo.setText("Volver");
+        volverDispo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverDispoActionPerformed(evt);
+            }
+        });
+        disponibilidadpanel.add(volverDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
+
+        jScrollPane2.setViewportView(outputAnchura);
+
+        disponibilidadpanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 170, 250));
+
+        jScrollPane3.setViewportView(outputProfundidad);
+
+        disponibilidadpanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 170, 250));
+
         TabbedPane.addTab("Disponibilidad", disponibilidadpanel);
 
         pedidopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,15 +195,28 @@ public class Interfaz extends javax.swing.JFrame {
         gestionpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         TabbedPane.addTab("Gestion Alamacenes ", gestionpanel);
 
+        jButton2.setText("Dibujar Grafo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout GrafoPanelLayout = new javax.swing.GroupLayout(GrafoPanel);
         GrafoPanel.setLayout(GrafoPanelLayout);
         GrafoPanelLayout.setHorizontalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGroup(GrafoPanelLayout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addComponent(jButton2)
+                .addContainerGap(471, Short.MAX_VALUE))
         );
         GrafoPanelLayout.setVerticalGroup(
             GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
+            .addGroup(GrafoPanelLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jButton2)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         TabbedPane.addTab("Grafo", GrafoPanel);
@@ -191,31 +263,88 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_grafoActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-
+         Archivo a = new Archivo();
+        
+        
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(null);
         File archivo = fc.getSelectedFile();
-        String filename = archivo.getPath();
-        Archivo a = new Archivo();
+        
+        if((archivo.getName()).contains(".txt")){
+        String filename = archivo.getPath();     
+
         grafox = a.armarGrafo(filename);
-        try{
-            FileReader fr = new FileReader (archivo);
-            BufferedReader br = new BufferedReader(fr);
-            String texto = "";
-            String linea = "";
-            while(((linea = br.readLine())!=null)){
-                texto+= linea+"\n";
-            }
-            archivotxt.setText(texto);
-            JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
-        }catch(Exception e){
+
+            if(grafox != null){
             
+                try{
+                    FileReader fr = new FileReader (archivo);
+                    BufferedReader br = new BufferedReader(fr);
+                    String texto = "";
+                    String linea = "";
+                    while(((linea = br.readLine())!=null)){
+                        texto+= linea+"\n";
+                    }
+                    archivotxt.setText(texto);
+                    JOptionPane.showMessageDialog(null, "Archivo leido correctamente");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
+                    }
+                }
+            
+            else{
+                JOptionPane.showMessageDialog(null, "Ingrese un archivo válido");
+            }
         }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "Error, no es archivo txt. Ingrese un archivo válido");
+        }
+        
     }//GEN-LAST:event_selectActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void volverDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverDispoActionPerformed
+        TabbedPane.setSelectedIndex(0);
+    }//GEN-LAST:event_volverDispoActionPerformed
+
+    private void bRecorrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRecorrerActionPerformed
+        String temp = "";
+        
+        if(grafox != null){
+            try{
+                String origen = dispoOrigen.getText();
+
+                temp = Recorrido.recorrerAnchura(grafox, origen);
+
+                outputAnchura.setText(temp);
+
+
+                temp = Recorrido.recorrerProfundidad(grafox, origen);
+                
+                outputProfundidad.setText(temp);
+
+            }catch(Exception e){
+
+                JOptionPane.showMessageDialog(null, "Error, recorrido fallido");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error, no ha cargado la información.");
+        }
+    }//GEN-LAST:event_bRecorrerActionPerformed
+
+    private void volverCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverCargaActionPerformed
+        TabbedPane.setSelectedIndex(0);
+    }//GEN-LAST:event_volverCargaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        GraficarGrafo s = new GraficarGrafo(); 
+        s.mostrar();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,19 +386,31 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JTabbedPane TabbedPane;
     private javax.swing.JTextArea archivotxt;
+    private javax.swing.JButton bRecorrer;
     private javax.swing.JButton cargararchivo;
     private javax.swing.JPanel cargartxtpanel;
+    private javax.swing.JTextField dispoOrigen;
     private javax.swing.JButton disponibilidad;
     private javax.swing.JPanel disponibilidadpanel;
     private javax.swing.JButton gestion;
     private javax.swing.JPanel gestionpanel;
     private javax.swing.JButton grafo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane outputAnchura;
+    private javax.swing.JTextPane outputProfundidad;
     private javax.swing.JPanel pedidopanel;
     private javax.swing.JButton realizarpedido;
     private javax.swing.JButton select;
+    private javax.swing.JButton volverCarga;
+    private javax.swing.JButton volverDispo;
     // End of variables declaration//GEN-END:variables
 }

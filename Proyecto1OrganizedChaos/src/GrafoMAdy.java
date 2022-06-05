@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author ERodríguez
+ * version: 01/06/22
  */
 public class GrafoMAdy {
     //Número de vértices
@@ -59,6 +60,14 @@ public class GrafoMAdy {
     
     public void setVerts(Vertice[] verts){
         this.verts = verts;
+    }
+    
+    public int[][] getmatAdy() {
+        return matAdy;
+    }
+
+    public void setmatAdy(int[][] matAdy) {
+        this.matAdy = matAdy;
     }
 
   
@@ -125,7 +134,7 @@ public class GrafoMAdy {
             }
             else{
                 System.out.println("Error, el vértice no existe"); //hacerle format
-        }
+            }
              
         }
         else{
@@ -154,6 +163,29 @@ public class GrafoMAdy {
         
     }
     
+    //Comprobar si existe la arista
+    public boolean existeArista(int v, int u){
+        boolean existe;
+        if(matAdy[v][u] != 0){
+            existe = true;
+        }else{
+            existe = false;
+        }
+        return existe;
+    }
+    
+    //buscar arista:
+//    public boolean getArista(int v, int u){
+//    boolean existe;
+//    if(matAdy[v][u] != 0){
+//        existe = true;
+//    }else{
+//        existe = false;
+//    }
+//    return existe;
+//}
+    
+
 //Vértice
     
     public void crearVertice(String nom){
@@ -220,5 +252,4 @@ public class GrafoMAdy {
         }
         return gSal;
     }
-    
 }
