@@ -128,4 +128,74 @@ public class Recorrido {
         
     return temp;
     }
+    
+    public static Vertice[] busquedaProductos(GrafoMAdy grafo, String nombre, Producto producto){
+        int valOrigen;
+        Integer w = null;
+        int intW;
+        int[] arrVisitados = null;
+        Vertice[] verts = grafo.getVerts(); //arreglo con los vertices del grafo
+        Vertice[] arrVertices = new Vertice[(grafo.getNumVerts())*2];
+        boolean encontrado;
+        int pos = 0;
+        
+                
+        try{
+            valOrigen = grafo.buscarIndex(nombre);
+            
+           if (valOrigen < 0)throw new Exception("Vertice no existe");
+        
+           Cola cola = new Cola();
+           arrVisitados = new int[grafo.getNumVerts()];
+           
+            for (int i = 0; i < grafo.getNumVerts(); i++) {
+                arrVisitados[i] = -1; //Los vértices se marcan con -1
+            
+            }
+            
+            arrVisitados[valOrigen] = 0; //vertice de partida se inicializa en 0
+            cola.encolar(valOrigen); //se encola un nodo con el índice del vértice 
+            
+            
+            for (int i = 0; i < grafo.getNumVerts(); i++) {
+                if(arrVisitados[i] == -1){
+                    
+                    while(!cola.esVacio()){
+                        
+                        
+                        w = (Integer) cola.desencolar();                     
+                        intW = w;
+                        Vertice vert = verts[intW];
+                        Lista lista = vert.getProductos();                      
+                        
+                    //formar el arreglo de vertices
+                        encontrado = lista.compararProducto(producto.getNombre());  
+                        
+                        if (encontrado == true){
+                            arrVertices[pos] = vert;
+                            pos++;
+                        }                       
+                        
+                    
+                    //Se encolan los adyacentes
+                    for (int j = 0; j < grafo.getNumVerts(); j++) {
+                        if((w != j) && (grafo.existeArista(w, j) && arrVisitados[j] == -1)){ //Utilizar la funcion de añadir a la matriz                            
+                            int valNodo = verts[j].getIndex();
+                            cola.encolar(valNodo); 
+                            arrVisitados[j] = 0;
+                            }
+                        }
+                    }
+                }
+            
+            }
+            return arrVertices;
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo [Anchura]");
+        }
+        return arrVertices;        
+   
+    } 
+
 }

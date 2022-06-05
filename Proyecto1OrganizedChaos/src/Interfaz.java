@@ -36,6 +36,7 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         TabbedPane = new javax.swing.JTabbedPane();
         MenuPanel = new javax.swing.JPanel();
         cargararchivo = new javax.swing.JButton();
@@ -85,6 +86,8 @@ public class Interfaz extends javax.swing.JFrame {
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 102));
@@ -295,20 +298,10 @@ public class Interfaz extends javax.swing.JFrame {
         gestionpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         TabbedPane.addTab("Gestion Almacenes ", gestionpanel);
 
-        javax.swing.GroupLayout GrafoPanelLayout = new javax.swing.GroupLayout(GrafoPanel);
-        GrafoPanel.setLayout(GrafoPanelLayout);
-        GrafoPanelLayout.setHorizontalGroup(
-            GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-        GrafoPanelLayout.setVerticalGroup(
-            GrafoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
-        );
-
+        GrafoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         TabbedPane.addTab("Grafo", GrafoPanel);
 
-        getContentPane().add(TabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, -1));
+        getContentPane().add(TabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, 380));
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -544,6 +537,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton hacerPedido;
     private javax.swing.JTextField inputProducto;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

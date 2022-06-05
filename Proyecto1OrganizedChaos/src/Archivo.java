@@ -177,5 +177,9 @@ public class Archivo {
             return null;
         }
        
-    }    
+    }
+    
+    public void actualizarTxt(GrafoMAdy grafo){
+        
+    }
 }

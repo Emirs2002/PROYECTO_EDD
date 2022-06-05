@@ -49,7 +49,7 @@ public class RutaMinima {
     
     public void conseguirRuta()
     {
-        for(int v = 0; v<n; v++) //ESTE FOR HACE QUE LA FUNCIO SE REPITA EL NUMEOR DE VERTICES, DE ESTA MANERA SE RECORRE TODA LA MATRIZ.
+        for(int v = 0; v<n; v++) //ESTE FOR HACE QUE LA FUNCION SE REPITA EL NUMEOR DE VERTICES, DE ESTA MANERA SE RECORRE TODA LA MATRIZ.
         {
             for(int i = 0; i<n; i++) //ESTE FOR RECORRE LA FILA DE LA RUTA PARA ENCONTRAR LOS PIVOTES.
             {

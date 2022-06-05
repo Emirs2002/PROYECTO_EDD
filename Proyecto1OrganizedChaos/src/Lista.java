@@ -126,21 +126,36 @@ public class Lista {
         
         }
     
+    public boolean compararProducto(String producto){
+        Nodo temp = pfirst;
+        boolean encontrado = false;
+        
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{                        
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+                String p = temp.getData().getNombre();
+                
+                if(p.equals(producto)){
+                    encontrado = true;
+                    break;
+                        } 
+                else{
+                    temp = proximoNodo(temp);  
+                        }
+
+               }
+            
+            return encontrado;
+            }
+        return encontrado;            
+        
+        }
     
-    //AÑADIR Y BORRAR AL INICIO
-    public void addAtStart(Nodo nodito){
-        
-        if(!this.isEmpty()){ 
-            Nodo temp = pfirst;
-            nodito.setPnext(temp);
-            pfirst = nodito;
-        }
-        else{
-            pfirst = plast = nodito;
-        }
-        
-        tamanho++; 
-    }
+    
+   
     
     //ELIMINA AL INICIO
     public void deleteAtStart(){

@@ -12,8 +12,8 @@ public class main {
     public static void main(String[] args) {
 
 
-        Archivo a = new Archivo();
-        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
+//        Archivo a = new Archivo();
+//        GrafoMAdy grafo = a.armarGrafo("test\\amazon.txt");
         
 //        grafo.printMatriz();
 //        Vertice[] e = grafo.getVerts();
@@ -22,20 +22,12 @@ public class main {
 //        
         
         
-        
-//-----------------------------------------------------------------------------
-        
-//        int[] prueba = Recorrido.recorrerAnchura(grafo, "E");
-//        
-//        for (int i = 0; i < prueba.length; i++) {
-//            System.out.print(prueba[i]);
-//        }
-        
+
 
 
 //
-//        Interfaz ventana = new Interfaz();
-//        ventana.setVisible(true);
+        Interfaz ventana = new Interfaz();
+        ventana.setVisible(true);
    
     }
     
