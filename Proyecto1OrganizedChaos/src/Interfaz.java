@@ -245,6 +245,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         hacerPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hacerPedido.setText("Realizar pedido");
+        hacerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hacerPedidoActionPerformed(evt);
+            }
+        });
         pedidopanel.add(hacerPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 140, 50));
 
         outputCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -495,12 +500,17 @@ public class Interfaz extends javax.swing.JFrame {
         String panel = outputProductos.getText();
         String lista = "";
         
+                
+        
+        
         if(!producto.equals("") && !cantidad.equals("0")){
             lista += producto+ ":" + cantidad;
+            
             if(!panel.equals("")){
                 outputProductos.setText(panel + "\n" + lista );
                 
                 outputCantidad.setText("0");
+              
             }
             else{
                 outputProductos.setText(lista);
@@ -518,6 +528,14 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo cantidad y campo producto vacío.");
         }
     }//GEN-LAST:event_addProductActionPerformed
+
+    private void hacerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerPedidoActionPerformed
+        String productos = outputProductos.getText();
+        String [] lista = productos.split("\n");
+        
+        
+        
+    }//GEN-LAST:event_hacerPedidoActionPerformed
 
     /**
      * @param args the command line arguments

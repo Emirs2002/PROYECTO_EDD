@@ -278,5 +278,22 @@ public class GrafoMAdy {
        return totalProductos;
     }
     
+    public String [] pedidoAlmacenes(Producto [] productlist, GrafoMAdy grafo)
+    {
+        String [] Alist;
+        String Aux = " ";
+        int contador = 0;
+        
+        for (int i = 0; i < productlist.length; i++) {
+            Aux += Recorrido.busquedaProductos(grafo, "A", productlist[i]);
+            Aux += ",";
+        }
+        
+        Alist = Aux.split(",");
+        
+        
+        
+       return Alist;
+    }
     
 }

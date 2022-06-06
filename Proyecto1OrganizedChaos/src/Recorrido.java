@@ -129,15 +129,15 @@ public class Recorrido {
     return temp;
     }
     
-    public static Vertice[] busquedaProductos(GrafoMAdy grafo, String nombre, Producto producto){
+    public static String busquedaProductos(GrafoMAdy grafo, String nombre, Producto producto){
         int valOrigen;
         Integer w = null;
         int intW;
         int[] arrVisitados = null;
         Vertice[] verts = grafo.getVerts(); //arreglo con los vertices del grafo
-        Vertice[] arrVertices = new Vertice[(grafo.getNumVerts())*2];
+        String vertices = "";
         boolean encontrado;
-        int pos = 0;
+       
         
                 
         try{
@@ -172,10 +172,13 @@ public class Recorrido {
                         encontrado = lista.compararProducto(producto.getNombre());  
                         
                         if (encontrado == true){
-                            arrVertices[pos] = vert;
-                            pos++;
+                            vertices += vert.getNombre() + ",";
+                            
                         }                       
-                        
+                        else{
+                            
+                            //System.out.println("point");
+                        }
                     
                     //Se encolan los adyacentes
                     for (int j = 0; j < grafo.getNumVerts(); j++) {
@@ -189,12 +192,12 @@ public class Recorrido {
                 }
             
             }
-            return arrVertices;
+            return vertices;
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error, no se pudo recorrer el grafo [Anchura]");
         }
-        return arrVertices;        
+        return vertices;        
    
     } 
 
