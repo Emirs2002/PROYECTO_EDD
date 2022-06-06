@@ -308,11 +308,9 @@ public class GrafoMAdy {
                     nuevaCantidad = Integer.parseInt(verts[i].getProductos().ObtenerCantidad()) - productlist[j].getCantidad();
                     product = new Producto(verts[i].getProductos().ObtenerNombre(), nuevaCantidad);
                     temp.setData(product);;
-                }
-               
+                } 
             }
         }
-        
     }catch(Exception e){
         JOptionPane.showMessageDialog(null, "No hay suficientes articulos disponibles, chequee el stock otr vez.");
     }

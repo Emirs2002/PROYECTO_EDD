@@ -46,7 +46,20 @@ public class Lista {
     public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
     }
-
+    
+    /**
+    *@return plast
+    */
+    public Nodo getPlast() {
+        return plast;
+    }
+   
+    /**
+    * @param plast, asigna plast
+    */
+    public void setPlast(Nodo plast) {
+        this.plast = plast;
+    }
 
  //CONSTRUCTOR
     public Lista() {

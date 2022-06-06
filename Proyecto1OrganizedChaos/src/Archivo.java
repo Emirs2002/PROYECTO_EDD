@@ -7,6 +7,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
+import java.io.PrintWriter;
 /**
  *
  * @author simon
@@ -181,5 +182,50 @@ public class Archivo {
     
     public void actualizarTxt(GrafoMAdy grafo){
         
+    }
+    
+    public void actualizarTxt(GrafoMAdy grafo, String dir){
+        Vertice[] vertices = grafo.getVerts();
+        String temp = "";
+        Producto producto = null; 
+        try{
+            
+            PrintWriter pw = new PrintWriter(dir);
+            pw.print("Almacenes;" + "\n");
+                       
+            
+            
+            for (int i=0; i < vertices.length; i++){
+                pw.print("Almacen" + " " + vertices[i].getNombre() + ":" + "\n");
+                Lista lista = vertices[i].getProductos();
+                Nodo temporal = lista.getPfirst();
+                for (int j = 0; j < lista.getTamanho(); j++) {
+                    producto = temporal.getData();
+                    
+                    if(temporal != lista.getPlast()){
+                    
+                        temp = producto.getNombre() + "," + producto.getCantidad();
+                        pw.print(temp + "\n");
+                        temporal = lista.proximoNodo(temporal); 
+                    }
+                    else
+                    {
+                                            
+                        temp = producto.getNombre() + "," + producto.getCantidad() + ";";
+                        pw.print(temp + "\n");
+                        temporal = lista.proximoNodo(temporal); 
+                    }
+                
+                
+                }
+     
+            }
+            
+          
+            pw.close();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"ERROR, NO SE PUDO ACTUALIZAR EL ARCHIVO");
+        }
     }
 }

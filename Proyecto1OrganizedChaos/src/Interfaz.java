@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Interfaz extends javax.swing.JFrame {
     protected GrafoMAdy grafox = null;
-
+    String filename = "";
     /**
      * Creates new form Interfaz
      */
@@ -573,7 +573,8 @@ public class Interfaz extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, str);
         JOptionPane.showMessageDialog(null, ruta);
         
-        
+        Archivo archivo = new Archivo();
+        archivo.actualizarTxt(grafox, filename);
        
         
         
