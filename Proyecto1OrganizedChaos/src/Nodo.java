@@ -11,6 +11,8 @@ public class Nodo{
     protected Nodo pnext;
     protected Producto data;
     protected Object data2;
+    private String[] edges;
+    
     
     
     public Nodo(Producto data) {

@@ -46,6 +46,7 @@ public class Interfaz extends javax.swing.JFrame {
         grafo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         cargartxtpanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         archivotxt = new javax.swing.JTextArea();
@@ -89,6 +90,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         gestionpanel = new javax.swing.JPanel();
         GrafoPanel = new javax.swing.JPanel();
+        VerGrafo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -149,6 +151,10 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JAVA.png"))); // NOI18N
         MenuPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 350));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/WhatsApp Image 2022-06-05 at 3.25.06 PM.jpeg"))); // NOI18N
+        jLabel17.setText("jLabel17");
+        MenuPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, -60, 910, 550));
 
         TabbedPane.addTab("Menu", MenuPanel);
 
@@ -334,14 +340,23 @@ public class Interfaz extends javax.swing.JFrame {
         TabbedPane.addTab("Gestion Almacenes ", gestionpanel);
 
         GrafoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        VerGrafo.setText("Ver Grafo");
+        VerGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerGrafoActionPerformed(evt);
+            }
+        });
+        GrafoPanel.add(VerGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+
         TabbedPane.addTab("Grafo", GrafoPanel);
 
         getContentPane().add(TabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 750, 380));
 
-        jLabel1.setFont(new java.awt.Font("Montserrat", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("EQUIPO SUR ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 750, 70));
+        jLabel1.setText("EQUIPO SUR");
+        jLabel1.setMaximumSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -532,10 +547,45 @@ public class Interfaz extends javax.swing.JFrame {
     private void hacerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerPedidoActionPerformed
         String productos = outputProductos.getText();
         String [] lista = productos.split("\n");
+        Producto [] productlist = new Producto[lista.length];
+        String [] productito= new String[1];
+        String [] Alist=null;
+        int x;
+        String ruta = "";
+        String str = "El Pedido es: \n";
+        
+        
+        for (int i = 0; i < lista.length; i++) {
+            productito = lista[i].split(":");
+            productlist[i] = new Producto(productito[0], Integer.parseInt(productito[1]));
+        }
+        
+        grafox.RestarProductos(productlist, grafox);
+        Alist = grafox.pedidoAlmacenes(productlist, grafox);
+        
+        RutaMinima rout = new RutaMinima(grafox, grafox.getVerts()[0]);
+        ruta = rout.conseguirRuta(grafox);
+        
+        for (int i = 0; i < productlist.length; i++) {
+            str+=lista[i]+"\n";
+        }
+        
+        JOptionPane.showMessageDialog(null, str);
+        JOptionPane.showMessageDialog(null, ruta);
+        
+        
+       
+        
         
         
         
     }//GEN-LAST:event_hacerPedidoActionPerformed
+
+    private void VerGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerGrafoActionPerformed
+        // TODO add your handling code here:
+        GraficarGrafo s = new GraficarGrafo(); 
+        s.mostrar();
+    }//GEN-LAST:event_VerGrafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,6 +628,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JComboBox<String> Productos;
     private javax.swing.JTabbedPane TabbedPane;
+    private javax.swing.JButton VerGrafo;
     private javax.swing.JButton addProduct;
     private javax.swing.JTextArea archivotxt;
     private javax.swing.JButton bRecorrer;
@@ -600,6 +651,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

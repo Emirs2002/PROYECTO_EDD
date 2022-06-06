@@ -255,7 +255,7 @@ public class GrafoMAdy {
         }
         return gSal;
     }
-    
+
      public String [] ProductosTotal()
     {
         Vertice x = new Vertice(null);
@@ -290,10 +290,32 @@ public class GrafoMAdy {
         }
         
         Alist = Aux.split(",");
-        
-        
-        
+
        return Alist;
     }
     
+    public void RestarProductos(Producto [] productlist, GrafoMAdy grafo){
+    int encontrado;
+    Producto product;
+    int nuevaCantidad=0;
+    Nodo temp;
+    try{
+        for (int i = 0; i < verts.length; i++) {
+            for (int j = 0; j < productlist.length; j++) {
+                encontrado = verts[i].getProductos().compararProductoCantidad(productlist[j].getCantidad());
+                if(encontrado != -1){
+                    temp = verts[i].getProductos().getNodo(encontrado);
+                    nuevaCantidad = Integer.parseInt(verts[i].getProductos().ObtenerCantidad()) - productlist[j].getCantidad();
+                    product = new Producto(verts[i].getProductos().ObtenerNombre(), nuevaCantidad);
+                    temp.setData(product);;
+                }
+               
+            }
+        }
+        
+    }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "No hay suficientes articulos disponibles, chequee el stock otr vez.");
+    }
 }
+}
+

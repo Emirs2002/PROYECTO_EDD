@@ -1,6 +1,11 @@
 
 import javax.swing.JOptionPane;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 /**
  *
  * @author alesc
@@ -189,6 +194,15 @@ public class Lista {
         }
     }
     
+    public void deleteAtIndex(int pos){
+        if (!isEmpty()){
+            pfirst = pfirst.getPnext();
+            tamanho -= 1;
+        }else{
+            JOptionPane.showMessageDialog(null,"La lista está vacía");
+        }
+    }
+    
     //AÑADIR AL FINAL
     public void addAtEnd(Nodo nodito){
         
@@ -265,4 +279,55 @@ public class Lista {
         }
     }
     
+         public String ObtenerCantidad(){
+        Nodo temp = pfirst;
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{
+            String print = "";             
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+
+                print += temp.getData().getCantidad();
+                
+                temp = proximoNodo(temp);               
+                
+               }
+            
+            return print;
+            }
+        return null;            
+        
+        }
+    
+        public int compararProductoCantidad(int cant){
+        Nodo temp = pfirst;
+        int cont = 0;
+        boolean encontrado = false;
+        
+        if (this.isEmpty()){
+            JOptionPane.showMessageDialog(null, "La lista está vacía");
+        }
+        else{                        
+
+            for (int i = 0; i< this.getTamanho(); i++ ){               
+                int p = temp.getData().getCantidad();
+                
+                if(cant <= p){
+                    encontrado = true;
+                    break;
+                        } 
+                else{
+                    temp = proximoNodo(temp);
+                    cont ++;
+                        } 
+               }
+            
+            if(encontrado == true){
+                return cont;
+            }
+            }
+        return -1;            
+        }
 }

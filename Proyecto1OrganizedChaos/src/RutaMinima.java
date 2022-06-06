@@ -44,11 +44,13 @@ public class RutaMinima {
         rutaFinal[o] = 0; //DECLARA EL PESO DEL ORIGEN AL ORIGEN EN CERO.
         visitados[o]=1; //DECLARA LA FILA DEL EL ORIGEN COMO VISITADO.
         
+        
     }
     
     
-    public void conseguirRuta()
+    public String conseguirRuta(GrafoMAdy grafo)
     {
+        String print = "";
         for(int v = 0; v<n; v++) //ESTE FOR HACE QUE LA FUNCION SE REPITA EL NUMEOR DE VERTICES, DE ESTA MANERA SE RECORRE TODA LA MATRIZ.
         {
             for(int i = 0; i<n; i++) //ESTE FOR RECORRE LA FILA DE LA RUTA PARA ENCONTRAR LOS PIVOTES.
@@ -71,8 +73,9 @@ public class RutaMinima {
         }
         for(int i =0; i<n; i++)
         {
-            System.out.println(o + " to " + i +" = "+rutaFinal[i]);
+            print+= "La ruta mas corta desde " + grafo.getVerts()[o].getNombre() + " hasta " + grafo.getVerts()[i].getNombre() + " es " + rutaFinal[i] + "\n";
         }
+        return print;
     }
     
     
