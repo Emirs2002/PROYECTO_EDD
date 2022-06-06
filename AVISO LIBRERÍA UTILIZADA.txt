@@ -1,0 +1,4 @@
+
+Para hacer la representación visual del grafo se utilizó la libería GraphStream
+
+https://graphstream-project.org/download/
